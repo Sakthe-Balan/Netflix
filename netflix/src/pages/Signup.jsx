@@ -1,89 +1,85 @@
-import React from "react";
-import styled from "styled-components";
-import BackgroundImage from "../components/BackgroundImage";
-import Header from "../components/Header";
-import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { firebaseAuth } from "../utils/Firebase";
-import {  useNavigate } from "react-router-dom";
-
-export default function Signup() {
-  const navigate=useNavigate();
-  const [showPassword, setshowPassword] = useState(false);
-  const [formValues, setformValues] = useState({
-    Email: "",
-    Password: "",
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import BackgroundImage from "../components/BackgroundImage";
+import Header from "../components/Header";
+import { firebaseAuth } from "../utils/firebase-config";
+function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
   });
+  const navigate = useNavigate();
+
   const handleSignIn = async () => {
     try {
       const { email, password } = formValues;
       await createUserWithEmailAndPassword(firebaseAuth, email, password);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  onAuthStateChanged(firebaseAuth, (CurrentUser) => {
-    if (CurrentUser) navigate("/");
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) navigate("/");
   });
+
   return (
     <Container showPassword={showPassword}>
       <BackgroundImage />
       <div className="content">
         <Header login />
-
-        <div className="body flex column a-center jcenter">
+        <div className="body flex column a-center j-center">
           <div className="text flex column">
-            <h1>Unlimited Movies Tv shows and more</h1>
-            <h4>Watch anhywhere , Cancel Anytime</h4>
+            <h1>Unlimited movies, TV shows and more.</h1>
+            <h4>Watch anywhere. Cancel anytime.</h4>
             <h6>
-              Ready to Watch, enter your email to create or restart membership
+              Ready to watch? Enter your email to create or restart membership.
             </h6>
           </div>
           <div className="form">
             <input
               type="email"
               placeholder="Email address"
-              name="email"
-              // value={formValues.Email}
               onChange={(e) =>
-                setformValues({
+                setFormValues({
                   ...formValues,
                   [e.target.name]: e.target.value,
                 })
               }
-              required
+              name="email"
+              value={formValues.email}
             />
             {showPassword && (
               <input
                 type="password"
-                placeholder="password"
-                name="password"
-                // value={formValues.Password}
+                placeholder="Password"
                 onChange={(e) =>
-                  setformValues({
+                  setFormValues({
                     ...formValues,
                     [e.target.name]: e.target.value,
                   })
                 }
-                required
+                name="password"
+                value={formValues.password}
               />
             )}
-
             {!showPassword && (
-              <button onClick={() => setshowPassword(true)}>Get started</button>
+              <button onClick={() => setShowPassword(true)}>Get Started</button>
             )}
-            {/* <input type="email"></input> */}
           </div>
-          <button onClick={handleSignIn}>Sign Up</button>
+          {showPassword && <button onClick={handleSignIn}>Log In</button>}
         </div>
       </div>
     </Container>
   );
 }
+
 const Container = styled.div`
   position: relative;
   .content {
@@ -96,54 +92,52 @@ const Container = styled.div`
     display: grid;
     grid-template-rows: 15vh 85vh;
     .body {
-    gap:1rem;
-    .text{
-      gap:1rem;
-      text-align:center;
-      font-size:2rem;
-      h1{
-        padding:0 25rem;
+      gap: 1rem;
+      .text {
+        gap: 1rem;
+        text-align: center;
+        font-size: 2rem;
+        h1 {
+          padding: 0 25rem;
+        }
       }
-    }
-    .form{
-      display:grid;
-     grid-template-columns:${({ showPassword }) =>
-       showPassword ? "1fr 1fr" : "2fr 1fr"};
-      width:60%;
-      input{
-        color:black;
-        border:none;
-        padding:1.5rem;
-        font-size:1.2rem;
-        border:1px solid black;
-        &:focus{
-          outline:none;
-
+      .form {
+        display: grid;
+        grid-template-columns: ${({ showPassword }) =>
+          showPassword ? "1fr 1fr" : "2fr 1fr"};
+        width: 60%;
+        input {
+          color: black;
+          border: none;
+          padding: 1.5rem;
+          font-size: 1.2rem;
+          border: 1px solid black;
+          &:focus {
+            outline: none;
+          }
+        }
+        button {
+          padding: 0.5rem 1rem;
+          background-color: #e50914;
+          border: none;
+          cursor: pointer;
+          color: white;
+          font-weight: bolder;
+          font-size: 1.05rem;
+        }
       }
-      // z-index:1000;
-
+      button {
+        padding: 0.5rem 1rem;
+        background-color: #e50914;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 0.2rem;
+        font-weight: bolder;
+        font-size: 1.05rem;
       }
-      button{
-        padding:0.5rem 1rem;
-        background-color:#e50914;
-        border:none;
-        cursor:pointer;
-        color:white;
-       
-        font-weight:bolder;
-        font-size:1.05rem;
-      }
-    }
-    button{
-      padding:0.5rem 1rem;
-        background-color:#e50914;
-        border:none;
-        cursor:pointer;
-        color:white;
-        border-radius:0.2 rem;
-        font-weight:bolder;
-        font-size:1.05rem;
-
     }
   }
 `;
+
+export default Signup;
