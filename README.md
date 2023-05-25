@@ -1,4 +1,4 @@
-# Movie Streaming Website
+# StreamIfy
 
 Welcome to our Movie Streaming Website! This web application allows you to view movies online. It was built using React, Material UI, Mongoose, ExpressJS, Express Validator, React Router, Formik, Yup, Axios, Themoviedb, Swiper, and JWT.
 
