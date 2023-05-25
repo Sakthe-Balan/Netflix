@@ -46,7 +46,5 @@ Follow these steps to run the project on your local machine:
 ![Screenshot 1](screenshot1.png)
 ![Screenshot 2](screenshot2.png)
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
 
