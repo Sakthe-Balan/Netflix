@@ -43,8 +43,8 @@ Follow these steps to run the project on your local machine:
 
 ## Screenshots
 
-![Screenshot 1](2.png)
-![Screenshot 2](3.png)
+![Screenshot_2](2.png)
+![Screenshot_1](3.png)
 
 
 
