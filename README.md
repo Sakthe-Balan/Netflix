@@ -2,7 +2,7 @@
 
 Welcome to our Movie Streaming Website! This web application allows you to view movies online. It was built using React, Material UI, Mongoose, ExpressJS, Express Validator, React Router, Formik, Yup, Axios, Themoviedb, Swiper, and JWT.
 
-![Website Screenshot](screenshot.png)
+![Website Screenshot](Screenshots/1.png)
 
 ## Features
 
@@ -43,8 +43,8 @@ Follow these steps to run the project on your local machine:
 
 ## Screenshots
 
-![Screenshot 1](screenshot1.png)
-![Screenshot 2](screenshot2.png)
+![Screenshot 1](Screenshots/2.png)
+![Screenshot 2](Screenshots/3.png)
 
 
 
