@@ -25,7 +25,6 @@ Welcome to our Movie Streaming Website! This web application allows you to view 
 - [Express Validator](https://express-validator.github.io/) - Middleware for validating and sanitizing data in Express.
 - [React Router](https://reactrouter.com/) - Declarative routing for React.
 - [Formik](https://formik.org/) - Form library for React.
-- [Yup](https://github.com/jquense/yup) - JavaScript schema builder for value parsing and validation.
 - [Axios](https://axios-http.com/) - Promise-based HTTP client for the browser and Node.js.
 - [ThemovieDB](https://www.themoviedb.org/) - API for accessing movie and TV show data.
 - [Swiper](https://swiperjs.com/) - JavaScript library for building responsive touch sliders.
